@@ -866,8 +866,12 @@ module.exports =
 
 	  }, {
 	    key: 'trackTiming',
-	    value: function trackTiming(timingCategory, timingVar, timingValue) {
-	      var timingLabel = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+	    value: function trackTiming(_ref4) {
+	      var timingCategory = _ref4.timingCategory,
+	          timingVar = _ref4.timingVar,
+	          timingValue = _ref4.timingValue,
+	          _ref4$timingLabel = _ref4.timingLabel,
+	          timingLabel = _ref4$timingLabel === undefined ? null : _ref4$timingLabel;
 
 	      if (this.config.debug) {
 	        (0, _utils.logDebug)({ timingCategory: timingCategory, timingVar: timingVar, timingValue: timingValue, timingLabel: timingLabel });
@@ -894,15 +898,15 @@ module.exports =
 
 	  }, {
 	    key: 'identify',
-	    value: function identify(_ref4) {
-	      var userId = _ref4.userId;
+	    value: function identify(_ref5) {
+	      var userId = _ref5.userId;
 
 	      this.setUsername(userId);
 	    }
 	  }, {
 	    key: 'setUserProperties',
-	    value: function setUserProperties(_ref5) {
-	      var properties = _ref5.properties;
+	    value: function setUserProperties(_ref6) {
+	      var properties = _ref6.properties;
 	    }
 	    // this.setDimensionsAndMetrics(properties)
 
@@ -921,18 +925,18 @@ module.exports =
 
 	  }, {
 	    key: 'addTransaction',
-	    value: function addTransaction(_ref6) {
-	      var id = _ref6.id,
-	          _ref6$affiliation = _ref6.affiliation,
-	          affiliation = _ref6$affiliation === undefined ? '' : _ref6$affiliation,
-	          _ref6$revenue = _ref6.revenue,
-	          revenue = _ref6$revenue === undefined ? 0 : _ref6$revenue,
-	          _ref6$shipping = _ref6.shipping,
-	          shipping = _ref6$shipping === undefined ? 0 : _ref6$shipping,
-	          _ref6$tax = _ref6.tax,
-	          tax = _ref6$tax === undefined ? 0 : _ref6$tax,
-	          _ref6$currency = _ref6.currency,
-	          currency = _ref6$currency === undefined ? 'USD' : _ref6$currency;
+	    value: function addTransaction(_ref7) {
+	      var id = _ref7.id,
+	          _ref7$affiliation = _ref7.affiliation,
+	          affiliation = _ref7$affiliation === undefined ? '' : _ref7$affiliation,
+	          _ref7$revenue = _ref7.revenue,
+	          revenue = _ref7$revenue === undefined ? 0 : _ref7$revenue,
+	          _ref7$shipping = _ref7.shipping,
+	          shipping = _ref7$shipping === undefined ? 0 : _ref7$shipping,
+	          _ref7$tax = _ref7.tax,
+	          tax = _ref7$tax === undefined ? 0 : _ref7$tax,
+	          _ref7$currency = _ref7.currency,
+	          currency = _ref7$currency === undefined ? 'USD' : _ref7$currency;
 
 	      ga('ecommerce:addTransaction', {
 	        id: id,
@@ -958,15 +962,15 @@ module.exports =
 
 	  }, {
 	    key: 'addItem',
-	    value: function addItem(_ref7) {
-	      var id = _ref7.id,
-	          name = _ref7.name,
-	          sku = _ref7.sku,
-	          category = _ref7.category,
-	          _ref7$price = _ref7.price,
-	          price = _ref7$price === undefined ? 0 : _ref7$price,
-	          _ref7$quantity = _ref7.quantity,
-	          quantity = _ref7$quantity === undefined ? 1 : _ref7$quantity;
+	    value: function addItem(_ref8) {
+	      var id = _ref8.id,
+	          name = _ref8.name,
+	          sku = _ref8.sku,
+	          category = _ref8.category,
+	          _ref8$price = _ref8.price,
+	          price = _ref8$price === undefined ? 0 : _ref8$price,
+	          _ref8$quantity = _ref8.quantity,
+	          quantity = _ref8$quantity === undefined ? 1 : _ref8$quantity;
 
 	      ga('ecommerce:addItem', {
 	        id: id,
