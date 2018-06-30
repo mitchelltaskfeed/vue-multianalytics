@@ -75,7 +75,11 @@ export default class GAModule extends BasicModule {
     }
 
     if (this.settings.userId) {
-      ga('set', '&uid', this.settings.userId)
+      ga('set', 'userId', this.settings.userId)
+
+      this.settings.userId = null
+    }
+
     if (this.settings.dimensions) {
       Object.keys(this.settings.dimensions).forEach((key, i) => {
         ga('set', `dimension${i}`, this.settings.dimensions[key])
