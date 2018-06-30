@@ -8,7 +8,8 @@ export default class GAModule extends BasicModule {
     super(MODULE_GA)
     this.settings = {
       additionalAccountNames: [],  // array of additional account names (only works for analyticsjs)
-      userId: null
+      userId: null,
+      dimensions: null,
     }
   }
 
@@ -75,6 +76,12 @@ export default class GAModule extends BasicModule {
 
     if (this.settings.userId) {
       ga('set', '&uid', this.settings.userId)
+    if (this.settings.dimensions) {
+      Object.keys(this.settings.dimensions).forEach((key, i) => {
+        ga('set', `dimension${i}`, this.settings.dimensions[key])
+      })
+
+      this.settings.dimensions = null
     }
 
     // ga('set', 'screenName', params.viewName)
@@ -168,7 +175,7 @@ export default class GAModule extends BasicModule {
   }
 
   setUserProperties({properties}) {
-    // this.setDimensionsAndMetrics(properties)
+    this.settings.dimensions = properties;
   }
 
   /**
