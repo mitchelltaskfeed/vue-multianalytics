@@ -704,7 +704,8 @@ module.exports =
 
 	    _this.settings = {
 	      additionalAccountNames: [], // array of additional account names (only works for analyticsjs)
-	      userId: null
+	      userId: null,
+	      dimensions: null
 	    };
 	    return _this;
 	  }
@@ -764,6 +765,8 @@ module.exports =
 	  }, {
 	    key: 'trackView',
 	    value: function trackView(_ref) {
+	      var _this2 = this;
+
 	      var viewName = _ref.viewName;
 
 	      if (this.config.debug) {
@@ -776,7 +779,17 @@ module.exports =
 	      };
 
 	      if (this.settings.userId) {
-	        ga('set', '&uid', this.settings.userId);
+	        ga('set', 'userId', this.settings.userId);
+
+	        this.settings.userId = null;
+	      }
+
+	      if (this.settings.dimensions) {
+	        Object.keys(this.settings.dimensions).forEach(function (key, i) {
+	          ga('set', 'dimension' + i, _this2.settings.dimensions[key]);
+	        });
+
+	        this.settings.dimensions = null;
 	      }
 
 	      // ga('set', 'screenName', params.viewName)
@@ -907,9 +920,9 @@ module.exports =
 	    key: 'setUserProperties',
 	    value: function setUserProperties(_ref6) {
 	      var properties = _ref6.properties;
-	    }
-	    // this.setDimensionsAndMetrics(properties)
 
+	      this.settings.dimensions = properties;
+	    }
 
 	    /**
 	    * Ecommerce transactions.
