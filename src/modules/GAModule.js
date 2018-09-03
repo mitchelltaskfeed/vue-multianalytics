@@ -10,6 +10,7 @@ export default class GAModule extends BasicModule {
       additionalAccountNames: [],  // array of additional account names (only works for analyticsjs)
       userId: null,
       dimensions: null,
+      sampleRate: 0,
     }
   }
 
@@ -46,6 +47,10 @@ export default class GAModule extends BasicModule {
       // set app name and version
       ga('set', 'appName', initConf.appName)
       ga('set', 'appVersion', initConf.appVersion)
+
+      if (initConf.sampleRate > 0) {
+        ga('set', 'sampleRate', initConf.sampleRate)
+      }
 
       // ecommerce
       if (initConf['ecommerce']) {
